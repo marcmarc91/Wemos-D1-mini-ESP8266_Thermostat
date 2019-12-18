@@ -10,8 +10,8 @@
 #define DHTTYPE DHT11
 
 #ifndef STASSID
-#define STASSID "Net"
-#define STAPSK  "secret123"
+#define STASSID "your-ssid"
+#define STAPSK  "your-password"
 #endif
 
 DHT dht(DHTPIN, DHTTYPE);
@@ -65,13 +65,13 @@ void setup()
 {
   pinMode(LED_BUILTIN, OUTPUT);
   WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, pass);   //Connect to access point
+  WiFi.begin(ssid, pass);   
   WiFi.hostname("WemosDHT11");
 
   while (WiFi.status() != WL_CONNECTED) {
-    digitalWrite(LED_BUILTIN, LOW);   // Turn the LED on (Note that LOW is the voltage level
+    digitalWrite(LED_BUILTIN, LOW);   
     delay(100);
-    digitalWrite(LED_BUILTIN, HIGH);  // Turn the LED off by making the voltage HIGH
+    digitalWrite(LED_BUILTIN, HIGH);  
     delay(400);
   }
 

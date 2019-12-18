@@ -4,8 +4,8 @@
 //IPAddress SendIP(192, 168, 0, 100);
 WiFiUDP udp;
 
-const char *ssid = "Net";
-const char *pass = "secret123";
+const char *ssid = "your-ssid";
+const char *pass = "your-password";
 
 const int relayPin = D1;
 
@@ -18,7 +18,7 @@ void setup()
   pinMode(relayPin, OUTPUT);
 
   WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, pass);   //Connect to access point
+  WiFi.begin(ssid, pass);   
   WiFi.hostname("WemosRelay");
 
   while (WiFi.status() != WL_CONNECTED) {
@@ -60,6 +60,6 @@ void sendResponse(int response, IPAddress remoteIp, int remotePort) {
   udp.beginPacket(remoteIp, remotePort);
   char cmd[1];
   cmd[0] = char(response);
-  udp.write(cmd, 1); //Send one byte to Wemos Relay
+  udp.write(cmd, 1); //Send one byte to Wemos Sensor Temperature DHT11
   udp.endPacket();
 }
